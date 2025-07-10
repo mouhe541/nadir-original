@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 48 96% 59%; /* Vivid Gold */
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 48 96% 59%; /* Vivid Gold for focus rings */
+    --radius: 0.75rem;
+
+    /* Glassmorphism Variables */
+    --glass-bg: rgba(22, 24, 28, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.08);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  .signature-text {
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    color: hsl(var(--primary));
+    text-shadow: 0 0 15px hsla(var(--primary), 0.5);
+  }
+}
+
+@layer components {
+  .luxury-button {
+    @apply bg-primary text-primary-foreground font-bold shadow-lg transition-all duration-300 ease-in-out;
+    @apply hover:bg-primary/90 hover:shadow-primary/40;
+    @apply focus:ring-2 focus:ring-offset-2 focus:ring-offset-background focus:ring-primary;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .glass-card {
+    @apply bg-glass-bg border border-glass-border rounded-xl shadow-lg;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-input {
+    @apply bg-white/5 border-glass-border rounded-md px-3 py-2;
+    @apply focus:bg-white/10 focus:ring-1 focus:ring-primary;
+    @apply transition-colors duration-200;
+  }
+  
+  /* Select component styling */
+  .select-content {
+    @apply bg-background border border-glass-border rounded-md shadow-lg;
+    @apply text-foreground;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+  
+  .select-item {
+    @apply cursor-pointer hover:bg-primary/10 rounded-sm px-2 py-1.5;
+    @apply transition-colors duration-200;
+  }
+  
+  .select-item[data-highlighted] {
+    @apply bg-primary/20 text-foreground;
+  }
+  
+  .select-item[data-selected] {
+    @apply bg-primary text-primary-foreground font-medium;
+  }
+} 
