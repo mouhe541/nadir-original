@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { Filter, Grid, List, Search, Star, ShoppingCart, Heart } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -31,6 +31,18 @@ const ProductCatalog = () => {
   const productsPerPage = 9;
 
   const categories = ['Tous', 'Maquillage', 'Parfum', 'Soin', 'Cheveux'];
+  
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const category = params.get('category');
+    if (category && categories.includes(category)) {
+      setSelectedCategory(category);
+    } else {
+      setSelectedCategory('Tous');
+    }
+  }, [location.search]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -74,7 +86,7 @@ const ProductCatalog = () => {
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-
+  
   // Handler functions for ProductCard
   const { addToCart, toggleCart } = useCartStore();
   
@@ -173,23 +185,21 @@ const ProductCatalog = () => {
                   <h3 className="font-medium text-foreground mb-3">Catégories</h3>
                 <div className="space-y-2">
                   {categories.map((category) => (
-                      <button
-                      key={category}
-                        onClick={() => {
-                          setSelectedCategory(category);
-                        }}
+                      <Link
+                        key={category}
+                        to={category === 'Tous' ? '/products' : `/products?category=${category}`}
                         className={`block w-full text-left px-3 py-2 rounded-md transition-colors ${
                           selectedCategory === category
                             ? 'bg-primary text-primary-foreground'
                             : 'hover:bg-primary/10'
                         }`}
-                    >
-                      {category}
-                      </button>
+                      >
+                        {category}
+                      </Link>
                   ))}
                 </div>
-              </div>
-            </aside>
+                </div>
+              </aside>
 
           {/* Products Grid */}
             <div className="lg:w-3/4 w-full">
@@ -228,19 +238,19 @@ const ProductCatalog = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-center mt-12">
-              <div className="flex space-x-2">
+          <div className="flex justify-center mt-12">
+            <div className="flex space-x-2">
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <Button
-                    key={page}
+                <Button
+                  key={page}
                     variant={page === currentPage ? 'default' : 'outline'}
-                    size="sm"
+                  size="sm"
                     onClick={() => paginate(page)}
                     className={page === currentPage ? '' : 'border-primary/30'}
-                  >
-                    {page}
-                  </Button>
-                ))}
+                >
+                  {page}
+                </Button>
+              ))}
               </div>
             </div>
           )}

@@ -144,20 +144,20 @@ const Analytics = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Monthly Orders Chart */}
+                {/* Monthly Orders Chart */}
         <Card className="lg:col-span-2 bg-gray-900/80 border-gray-800 p-4">
           <CardTitle className="text-lg font-semibold mb-4 text-white">Commandes Mensuelles</CardTitle>
           <CardContent className="h-[350px] p-0">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={monthlyOrderData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={monthlyOrderData}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
                 <XAxis dataKey="name" stroke="#fff" fontSize={12} />
                 <YAxis stroke="#fff" fontSize={12} />
-                <Tooltip contentStyle={{ backgroundColor: 'rgba(30, 30, 30, 0.8)', border: '1px solid rgba(255, 255, 255, 0.2)' }} />
-                <Legend />
-                <Line type="monotone" dataKey="orders" stroke="#FFC107" strokeWidth={2} />
-              </LineChart>
-            </ResponsiveContainer>
+                      <Tooltip contentStyle={{ backgroundColor: 'rgba(30, 30, 30, 0.8)', border: '1px solid rgba(255, 255, 255, 0.2)' }} />
+                      <Legend />
+                      <Line type="monotone" dataKey="orders" stroke="#FFC107" strokeWidth={2} />
+                    </LineChart>
+                  </ResponsiveContainer>
           </CardContent>
         </Card>
 
@@ -170,13 +170,13 @@ const Analytics = () => {
                     recentActivities.map((activity, index) => (
                     <div key={index} className="flex items-start space-x-4">
                         <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
-                            {activity.userName.charAt(0)}
+                                {activity.userName.charAt(0)}
+                            </div>
+                            <div>
+                                <p className="text-sm font-medium text-white">{activity.userName}</p>
+                                <p className="text-xs text-gray-400">a commandé <span className="font-semibold text-primary">{activity.productName}</span></p>
                         </div>
-                        <div>
-                            <p className="text-sm font-medium text-white">{activity.userName}</p>
-                            <p className="text-xs text-gray-400">a commandé <span className="font-semibold text-primary">{activity.productName}</span></p>
                         </div>
-                    </div>
                     ))
                 ) : (
                     <div className="text-center py-8 h-full flex flex-col justify-center items-center">

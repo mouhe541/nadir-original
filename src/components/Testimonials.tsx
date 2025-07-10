@@ -12,18 +12,18 @@ const Testimonials = () => {
       icon: Star,
       number: "4.9/5",
       label: "Note Moyenne"
-    },
-    {
+  },
+  {
       icon: Heart,
       number: "98%",
       label: "Taux de Satisfaction"
-    },
-    {
+  },
+  {
       icon: Truck,
       number: "24h",
       label: "Livraison Express"
-    }
-  ];
+  }
+];
 
   const cardVariants: Variants = {
     hidden: { opacity: 0, y: 30 },

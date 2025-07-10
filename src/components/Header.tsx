@@ -6,6 +6,20 @@ import { ShoppingCart, Menu, ChevronDown } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { CartSidebar } from './CartSidebar';
 import { useCartStore } from '@/store/cartStore';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
+
 
 const Header = () => {
   const { toggleCart, getCartItemCount } = useCartStore();
@@ -32,6 +46,8 @@ const Header = () => {
     { name: "Store", href: "/products" },
   ];
   
+  const categories = ['Maquillage', 'Parfum', 'Soin', 'Cheveux'];
+
   return (
     <>
       <header 
@@ -49,12 +65,40 @@ const Header = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex flex-1 justify-center items-center space-x-8">
-              {mainNav.map((item) => (
-                <a key={item.name} href={item.href} className="text-foreground hover:text-primary transition-colors duration-300 font-medium text-lg">
-                  {item.name}
-                </a>
-              ))}
+            <nav className="hidden md:flex flex-1 justify-center items-center">
+              <NavigationMenu>
+                <NavigationMenuList className="space-x-8">
+                  {mainNav.map((item) => (
+                    <NavigationMenuItem key={item.name}>
+                      <a href={item.href} className="text-foreground hover:text-primary transition-colors duration-300 font-medium text-lg">
+                        {item.name}
+                      </a>
+                    </NavigationMenuItem>
+                  ))}
+
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="text-foreground hover:text-primary data-[state=open]:text-primary transition-colors duration-300 font-medium text-lg bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent">
+                      Catégories
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-background border-glass-border">
+                        {categories.map((category) => (
+                          <li key={category}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                to={`/products?category=${category}`}
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="text-sm font-medium leading-none text-foreground">{category}</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
             </nav>
 
             {/* Right Actions */}
@@ -90,6 +134,24 @@ const Header = () => {
                   {item.name}
                 </a>
               ))}
+              <Collapsible className="pt-2 border-b border-glass-border">
+                <CollapsibleTrigger className="flex justify-between items-center w-full text-lg text-foreground hover:text-primary transition-colors duration-300 py-2">
+                  <span>Catégories</span>
+                  <ChevronDown className="h-5 w-5 transition-transform duration-200" />
+                </CollapsibleTrigger>
+                <CollapsibleContent className="py-2 pl-4">
+                  {categories.map((category) => (
+                    <Link
+                      key={category}
+                      to={`/products?category=${category}`}
+                      className="block text-base text-muted-foreground hover:text-primary transition-colors duration-300 py-2 border-b border-glass-border last:border-b-0"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {category}
+                    </Link>
+                  ))}
+                </CollapsibleContent>
+              </Collapsible>
             </nav>
           </div>
         </div>

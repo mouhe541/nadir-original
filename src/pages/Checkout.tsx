@@ -214,11 +214,11 @@ const Checkout = () => {
                     <option value="" disabled>
                       Sélectionnez votre wilaya
                     </option>
-                    {wilayas.map((wilaya, index) => (
+                      {wilayas.map((wilaya, index) => (
                       <option key={`wilaya-${index}`} value={wilaya}>
-                        {index + 1} - {wilaya}
+                          {index + 1} - {wilaya}
                       </option>
-                    ))}
+                      ))}
                   </select>
                 </div>
                 <div>
@@ -272,4 +272,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default Checkout; 

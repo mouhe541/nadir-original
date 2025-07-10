@@ -121,10 +121,10 @@ const Hero = () => {
               variant="outline" 
               className="button-outline-shimmer text-base md:text-lg px-6 md:px-10 py-3 md:py-4 flex items-center gap-3 w-full"
             >
-              <div className="shimmer-effect" />
+            <div className="shimmer-effect" />
               <ShoppingBag className="w-5 h-5 mr-2" />
               Visiter Notre Boutique
-            </Button>
+          </Button>
           </Link>
         </div>
 

@@ -267,7 +267,7 @@ const ProductDetail = () => {
                 Ajouter au Panier
               </Button>
             </div>
-            
+
             {product.benefits && product.benefits.length > 0 && (
               <div className="mt-8">
                   <h3 className="text-lg font-serif signature-text mb-4">Pourquoi vous allez l'adorer</h3>
@@ -279,7 +279,7 @@ const ProductDetail = () => {
                           </li>
                       ))}
                   </ul>
-              </div>
+                </div>
             )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center pt-6 mt-6 border-t border-glass-border">
@@ -288,19 +288,19 @@ const ProductDetail = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 mb-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 10c-4.418 0-8-5.373-8-10a8 8 0 1116 0c0 4.627-3.582 10-8 10z" /></svg>
                 <span className="text-sm font-medium">Disponible en Algérie</span>
                 <span className="text-xs text-muted-foreground">Ce produit est disponible exclusivement et pour la première fois en Algérie.</span>
-              </div>
+                </div>
               <div className="flex flex-col items-center">
                 {/* Guarantee/Cart icon */}
                 <ShoppingCart className="h-7 w-7 mb-2 text-primary" />
                 <span className="text-sm font-medium">30 jours de garantie</span>
                 <span className="text-xs text-muted-foreground">À la réception du produit, vous pouvez le retourner sous 30 jours.</span>
-              </div>
+                </div>
               <div className="flex flex-col items-center">
                 {/* Headset icon */}
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 mb-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3C7.03 3 3 7.03 3 12v5a3 3 0 003 3h1a1 1 0 001-1v-4a1 1 0 00-1-1H6v-2c0-3.86 3.14-7 7-7s7 3.14 7 7v2h-1a1 1 0 00-1 1v4a1 1 0 001 1h1a3 3 0 003-3v-5c0-4.97-4.03-9-9-9z" /></svg>
                 <span className="text-sm font-medium">Service client</span>
                 <span className="text-xs text-muted-foreground">Nous sommes disponibles du samedi au jeudi pour répondre à vos questions.</span>
-              </div>
+                </div>
               <div className="flex flex-col items-center">
                 {/* Money icon */}
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 mb-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-4.418 0-8-5.373-8-10a8 8 0 1116 0c0 4.627-3.582 10-8 10z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 16v-4m0 0V8m0 4h4m-4 0H8" /></svg>

@@ -120,9 +120,9 @@ const OrdersPage = () => {
                     onChange={(e) => handleStatusChange(order.id, e.target.value as Order['status'])}
                     className={cn("text-white text-sm rounded-md px-2 py-1 border-0 focus:ring-2 focus:ring-primary", statusConfig[order.status]?.color)}
                   >
-                    {Object.entries(statusConfig).map(([status, { label }]) => (
+                      {Object.entries(statusConfig).map(([status, { label }]) => (
                       <option key={status} value={status} className="bg-gray-800 text-white">{label}</option>
-                    ))}
+                      ))}
                   </select>
                 </TableCell>
                 <TableCell>{new Date(order.created_at).toLocaleDateString()}</TableCell>
