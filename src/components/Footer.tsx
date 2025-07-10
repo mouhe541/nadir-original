@@ -65,12 +65,17 @@ const Footer = () => {
               <li>
                 <a href="/#avis" className="text-muted-foreground hover:text-primary transition-colors duration-300">
                   Avis
-                </a>
-              </li>
+                  </a>
+                </li>
               <li>
                 <a href="/products" className="text-muted-foreground hover:text-primary transition-colors duration-300">
                   Store
                 </a>
+              </li>
+              <li>
+                <Link to="/admin" className="text-muted-foreground hover:text-primary transition-colors duration-300">
+                  Administrator
+                </Link>
               </li>
             </ul>
           </div>
